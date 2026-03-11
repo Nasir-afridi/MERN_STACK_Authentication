@@ -1,4 +1,3 @@
-// App.js
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -14,10 +13,8 @@ import Home from "./pages/Home";
 
 axios.defaults.withCredentials = true;
 
-// ProtectedRoute with session control
 const ProtectedRoute = ({ user, sessionStarted, children }) => {
   if (!sessionStarted) {
-    // Initial render ke liye loading state
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-gray-500 text-lg">Loading...</div>
@@ -28,7 +25,6 @@ const ProtectedRoute = ({ user, sessionStarted, children }) => {
   if (!user) return <Navigate to="/login" replace />;
   return children;
 };
-
 function App() {
   const [user, setUser] = useState(null);
   const [sessionStarted, setSessionStarted] = useState(false);
